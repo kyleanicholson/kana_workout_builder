@@ -1,0 +1,1 @@
+This is a simple application for building and tracking strength training workouts. A user is able to create an account and can start building their workouts, which can be saved and exported as part of a program.
