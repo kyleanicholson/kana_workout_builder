@@ -1,0 +1,16 @@
+{% extends "kana_workout_builder_app/base.html" %} {% block content %}
+<p>Workout: {{ workout }} </p>
+
+<p>Exercises:</p>
+<ul>
+  {% for exercise in exercises %}
+  <li>
+    <p>{{ exercise.name|linebreaks}}</p>
+    <p>{{ exercise.sets }} sets, {{ exercise.sets }} reps, @RPE{{ exercise.rpe }} </p>
+  </li>
+  {% empty %}
+  <li>There are no exercises in this workout yet.</li>
+  {% endfor %}
+</ul>
+
+{% endblock content %}

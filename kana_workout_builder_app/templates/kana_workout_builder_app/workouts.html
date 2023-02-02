@@ -1,0 +1,10 @@
+{% extends "kana_workout_builder_app/base.html" %} {% block content %}
+<p>My Workouts</p>
+<ul>
+  {% for workout in workouts %}
+  <li><a href="{% url 'kana_workout_builder_app:workout' workout.id %}">{{ workout }} </a></li>
+  {% empty %}
+  <li>No topics have been added yet.</li>
+  {% endfor %}
+</ul>
+{% endblock content %}
