@@ -2,11 +2,18 @@
 <p>Workout: {{ workout }} </p>
 
 <p>Exercises:</p>
+<p>
+  <a href="{% url 'kana_workout_builder_app:new_exercise' workout.id %}">Add new exercise</a>
+</p>
 <ul>
   {% for exercise in exercises %}
   <li>
     <p>{{ exercise.name|linebreaks}}</p>
     <p>{{ exercise.sets }} sets, {{ exercise.sets }} reps, @RPE{{ exercise.rpe }} </p>
+    <p>{{ exercise.notes}}</p>
+    <p>
+      <a href="{% url 'kana_workout_builder_app:edit_exercise' exercise.id %}">Edit exercise</a>
+    </p>
   </li>
   {% empty %}
   <li>There are no exercises in this workout yet.</li>

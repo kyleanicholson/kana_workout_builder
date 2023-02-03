@@ -4,7 +4,8 @@
   {% for workout in workouts %}
   <li><a href="{% url 'kana_workout_builder_app:workout' workout.id %}">{{ workout }} </a></li>
   {% empty %}
-  <li>No topics have been added yet.</li>
+  <li>No workouts have been added yet.</li>
   {% endfor %}
 </ul>
+<a href="{% url 'kana_workout_builder_app:new_workout' %}">Add a new workout</a>
 {% endblock content %}
