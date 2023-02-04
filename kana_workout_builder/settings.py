@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # My apps
     "kana_workout_builder_app",
+    "users",
     # Django preinstalled apps
     "django.contrib.admin",
     "django.contrib.auth",

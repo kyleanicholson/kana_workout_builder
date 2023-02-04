@@ -1,5 +1,11 @@
 <p>
     <a href="{% url 'kana_workout_builder_app:index' %}">Kana | </a>
-    <a href="{% url 'kana_workout_builder_app:workouts' %}">My Workouts</a>
+    <a href="{% url 'kana_workout_builder_app:workouts' %}">My Workouts |</a>
+    {% if user.is_authenticated %}
+    Hello {{ user.username }}
+    <a href="{% url 'users:logout' %}">Log out</a>
+    {% else %}
+    <a href="{% url 'users:login' %}">Log in</a>
+    {% endif %}
 </p>
 {% block content %} {% endblock content %}
