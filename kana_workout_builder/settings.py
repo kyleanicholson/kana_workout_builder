@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     # My apps
     "kana_workout_builder_app",
     "users",
+    # Third party apps
+    "bootstrap4",
     # Django preinstalled apps
     "django.contrib.admin",
     "django.contrib.auth",
@@ -125,3 +127,6 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# My settings
+LOGIN_URL = "users:login"

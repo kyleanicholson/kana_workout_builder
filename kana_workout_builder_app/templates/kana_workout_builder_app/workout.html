@@ -1,23 +1,37 @@
-{% extends "kana_workout_builder_app/base.html" %} {% block content %}
-<p>Workout: {{ workout }} </p>
+{% extends "kana_workout_builder_app/base.html" %}
 
-<p>Exercises:</p>
+{% block page_header %}
+<h3>{{ workout }}</h3>
+{% endblock page_header %}
+{% block content %}
 <p>
   <a href="{% url 'kana_workout_builder_app:new_exercise' workout.id %}">Add new exercise</a>
 </p>
-<ul>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Exercise</th>
+      <th scope="col">Sets</th>
+      <th scope="col">Reps</th>
+      <th scope="col">RPE</th>
+      <th scope="col">Notes</th>
+    </tr>
+  </thead>
   {% for exercise in exercises %}
-  <li>
-    <p>{{ exercise.name|linebreaks}}</p>
-    <p>{{ exercise.sets }} sets, {{ exercise.sets }} reps, @RPE{{ exercise.rpe }} </p>
-    <p>{{ exercise.notes}}</p>
-    <p>
-      <a href="{% url 'kana_workout_builder_app:edit_exercise' exercise.id %}">Edit exercise</a>
-    </p>
-  </li>
+  <tbody class="table-group-divider">
+    <tr>
+      <td>{{ exercise.name }} <small><a
+            href="{% url 'kana_workout_builder_app:edit_exercise' exercise.id %}">edit</a></small> </td>
+      <td>{{ exercise.sets }}</td>
+      <td>{{ exercise.sets }}</td>
+      <td>{{ exercise.rpe }}</td>
+      <td>{{ exercise.notes }}</td>
+    </tr>
+
+  </tbody>
   {% empty %}
-  <li>There are no exercises in this workout yet.</li>
+  <p>No exercises have been added yet</p>
   {% endfor %}
-</ul>
+</table>
 
 {% endblock content %}

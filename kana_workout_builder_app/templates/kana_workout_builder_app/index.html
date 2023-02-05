@@ -1,5 +1,10 @@
-{% extends "kana_workout_builder_app/base.html" %} {% block content %}
-<p>
-  Kana helps you efficiently create custom strength training program templates.
-</p>
-{% endblock content %}
+{% extends "kana_workout_builder_app/base.html" %}
+
+{% block page_header %}
+<div class="jumbotron">
+  <h1 class="display-3">Craft your custom strength training plan</h1>
+  <p class="lead">Customize your strength training workouts with the Kana workout builder app. </p>
+  <a href="{% url 'users:register' %}" class="btn btn-lg btn-primary" role="button">Register &raquo;</a>
+</div>
+
+{% endblock page_header %}

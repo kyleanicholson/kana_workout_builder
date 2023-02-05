@@ -1,11 +1,27 @@
-{% extends "kana_workout_builder_app/base.html" %} {% block content %}
-<p>My Workouts</p>
-<ul>
-  {% for workout in workouts %}
-  <li><a href="{% url 'kana_workout_builder_app:workout' workout.id %}">{{ workout }} </a></li>
-  {% empty %}
-  <li>No workouts have been added yet.</li>
-  {% endfor %}
-</ul>
-<a href="{% url 'kana_workout_builder_app:new_workout' %}">Add a new workout</a>
+{% extends "kana_workout_builder_app/base.html" %}
+{% block page_header %}
+<h1>My Workouts</h1>
+{% endblock page_header %}
+{% block content %}
+<div class="card" style="width: 50%;">
+
+  <ul class="list-group list-group">
+    {% for workout in workouts %}
+    <li class="list-group-item">
+      <h3><a href="{% url 'kana_workout_builder_app:workout' workout.id %}">{{ workout }} </a></h3>
+    </li>
+    {% empty %}
+
+    <li class="list-group-item">
+      <h3>No workouts have been added yet.</h3>
+    </li>
+    {% endfor %}
+  </ul>
+  <div class="card-footer">
+    <a href="{% url 'kana_workout_builder_app:new_workout' %}" class="btn btn-lg btn-primary mt-3">Add a new
+      workout</a>
+  </div>
+
+</div>
+
 {% endblock content %}
