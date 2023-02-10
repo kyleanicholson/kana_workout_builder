@@ -1,0 +1,16 @@
+{% extends "kana_workout_builder_app/base.html" %}
+{% block page_header %}
+<h3>Start taking control of your fitness today</h3>
+{% endblock page_header %}
+{% block content %}
+<p>
+    Kana is the workout builder app to help you take your fitness to the next level. Made for powerlifters,
+    bodybuilders, coaches, and strength training enthusiasts, our app incorporates science-based autoregulation metrics
+    to create intelligent training plans that challenge you to grow stronger by helping you accurately assess difficulty
+    and make consistent progress while
+    staying free from injury.
+</p>
+<p><a href="{% url 'users:register' %}"> Create a free account </a> and log in to save,
+    create, and share your customized strength
+    training templates!</p>
+{% endblock content %}

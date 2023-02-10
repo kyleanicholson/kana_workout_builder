@@ -6,6 +6,6 @@
 <form action="{% url 'kana_workout_builder_app:new_workout' %}" method='post'>
     {% csrf_token %}
     {{ form.as_p }}
-    <button name="submit">Add workout</button>
+    <button class="btn btn-primary" name="submit">Add workout</button>
 </form>
 {% endblock content %}

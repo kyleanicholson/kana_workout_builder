@@ -6,6 +6,7 @@ app_name = "kana_workout_builder_app"
 urlpatterns = [
     # Home page
     path("", views.index, name="index"),
+    path("about/", views.about, name="about"),
     path("workouts/", views.workouts, name="workouts"),
     path("workouts/<int:workout_id>/", views.workout, name="workout"),
     path("new_workout/", views.new_workout, name="new_workout"),

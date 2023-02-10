@@ -3,25 +3,42 @@
 <h1>My Workouts</h1>
 {% endblock page_header %}
 {% block content %}
-<div class="card" style="width: 50%;">
 
-  <ul class="list-group list-group">
-    {% for workout in workouts %}
-    <li class="list-group-item">
-      <h3><a href="{% url 'kana_workout_builder_app:workout' workout.id %}">{{ workout }} </a></h3>
-    </li>
-    {% empty %}
-
-    <li class="list-group-item">
-      <h3>No workouts have been added yet.</h3>
-    </li>
-    {% endfor %}
-  </ul>
-  <div class="card-footer">
-    <a href="{% url 'kana_workout_builder_app:new_workout' %}" class="btn btn-lg btn-primary mt-3">Add a new
-      workout</a>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for workout in workouts %}
+  <div class="col">
+    <div class="card mb-4">
+      <div class="card-header">
+        <a href="{% url 'kana_workout_builder_app:workout' workout.id %}">
+          <h5 class="card-title">{{ workout }}</h5>
+        </a>
+      </div>
+      <ul class="list-group list-group">
+        {% for exercise in workout.exercise_set.all %}
+        <li class="list-group-item">
+          <p>{{exercise.name}} - {{exercise.sets}} * {{exercise.reps}} @ {{exercise.rpe}}</p>
+        </li>
+        {% empty %}
+        <li class="list-group-item">
+          <p>No exercises have been added to this workout yet</p>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="card-footer">
+        <p> <a class="btn btn-md btn-secondary mt-2" href="{% url 'kana_workout_builder_app:workout' workout.id %}">Add
+            exercise</a></p>
+      </div>
+    </div>
   </div>
-
+  {% empty %}
+  <h3>No workouts have been added yet.</h3>
 </div>
+{% endfor %}
+</div>
+<p>
+  <a href="{% url 'kana_workout_builder_app:new_workout' %}" class="btn btn-lg btn-primary mt-3">Create new
+    workout</a>
+</p>
+
 
 {% endblock content %}

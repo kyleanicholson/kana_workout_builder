@@ -7,13 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kana Workout Builder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
-        <a class="navbar-brand" href="{% url 'kana_workout_builder_app:index' %}">Kana</a>
+        <a class="navbar-brand" href="{% url 'kana_workout_builder_app:index' %}"><i class="fa-solid fa-dumbbell"></i>
+            Kana</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span></button>
@@ -21,6 +25,9 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a href="{% url 'kana_workout_builder_app:workouts' %}" class="nav-link">My Workouts</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'kana_workout_builder_app:about' %}" class="nav-link">About</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

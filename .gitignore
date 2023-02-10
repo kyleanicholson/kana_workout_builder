@@ -6,3 +6,6 @@ kana_workout_builder_app/__pycache__/models.cpython-310.pyc
 kana_workout_builder_app/__pycache__/urls.cpython-310.pyc
 kana_workout_builder_app/__pycache__/views.cpython-310.pyc
 *.sqlite3
+kana_workout_builder/__pycache__/settings.cpython-310.pyc
+kana_workout_builder/__pycache__/settings.cpython-310.pyc
+kana_workout_builder/__pycache__/settings.cpython-310.pyc

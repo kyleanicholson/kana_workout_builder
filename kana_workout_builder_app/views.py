@@ -10,6 +10,11 @@ def index(request):
     return render(request, "kana_workout_builder_app/index.html")
 
 
+def about(request):
+    """The about page for Kana Workout Builder"""
+    return render(request, "kana_workout_builder_app/about.html")
+
+
 @login_required
 def workouts(request):
     """Show all workouts"""

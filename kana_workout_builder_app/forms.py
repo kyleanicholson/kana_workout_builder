@@ -9,10 +9,13 @@ class WorkoutForm(forms.ModelForm):
         fields = ["title"]
         labels = {"title": ""}
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for myField in self.fields:
+            self.fields[myField].widget.attrs["class"] = "form-control"
+
 
 class ExerciseForm(forms.ModelForm):
-    required_css_class = "required-field"
-
     class Meta:
         model = Exercise
         fields = ["name", "sets", "reps", "rpe", "notes"]

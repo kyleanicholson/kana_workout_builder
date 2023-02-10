@@ -18,7 +18,10 @@ class Workout(models.Model):
 class Exercise(models.Model):
     """An exercise created by the user, associated w/ a workout"""
 
-    workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
+    workout = models.ForeignKey(
+        Workout,
+        on_delete=models.CASCADE,
+    )
     name = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
     sets = models.PositiveSmallIntegerField(
