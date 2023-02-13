@@ -16,8 +16,8 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
-        <a class="navbar-brand" href="{% url 'kana_workout_builder_app:index' %}"><i class="fa-solid fa-dumbbell"></i>
-            Kana</a>
+        <a class="navbar-brand" href="{% url 'kana_workout_builder_app:index' %}">
+            Kana<i class="fa-solid fa-dumbbell px-2"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span></button>
@@ -52,7 +52,20 @@
             {% block content %} {% endblock content %}
         </div>
     </main>
-
+    <footer>
+        <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item p-2"><a class="nav-link" href="{% url 'kana_workout_builder_app:index' %}">Home</a></li>
+                    <li class="nav-item p-2"><a class="nav-link" href="{% url 'kana_workout_builder_app:about' %}">About</a></li>
+                    <li class="nav-item p-2"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item p-2"><a class="nav-link" href="#">Pricing</a></li>
+                
+                </ul>
+                <p>&copy; Kyle Nicholson 2023</p>
+            </div>
+        </nav>
+    </footer>
 </body>
 
 </html>
