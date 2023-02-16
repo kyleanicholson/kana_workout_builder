@@ -1,6 +1,23 @@
 from django import forms
 
-from .models import Workout, Exercise
+from .models import Workout, Exercise, Program
+
+
+class ProgramForm(forms.ModelForm):
+    class Meta:
+        model = Program
+        fields = ["title", "goal", "days_per_week"]
+        labels = {
+            "title": "Title",
+            "goal": "Training Goal",
+            "days_per_week": "Days Per Week",
+        }
+        widgets = {"days_per_week": forms.NumberInput(attrs={"max": "7"})}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for myField in self.fields:
+            self.fields[myField].widget.attrs["class"] = "form-control"
 
 
 class WorkoutForm(forms.ModelForm):

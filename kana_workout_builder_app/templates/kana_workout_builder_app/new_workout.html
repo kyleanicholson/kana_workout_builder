@@ -1,11 +1,12 @@
-{% extends "kana_workout_builder_app/base.html" %}
-{% block content %}
+{% extends "kana_workout_builder_app/base.html" %} {% block content %}
 
 <p>Workout Title:</p>
 
-<form action="{% url 'kana_workout_builder_app:new_workout' %}" method='post'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-primary" name="submit">Add workout</button>
+<form
+  action="{% url 'kana_workout_builder_app:new_workout' program.id %}"
+  method="post"
+>
+  {% csrf_token %} {{ form.as_p }}
+  <button class="btn btn-primary" name="submit">Add workout</button>
 </form>
 {% endblock content %}
