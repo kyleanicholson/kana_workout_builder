@@ -1,16 +1,17 @@
 from django import forms
-
 from .models import Workout, Exercise, Program
+from django.forms import formset_factory
 
 
 class ProgramForm(forms.ModelForm):
     class Meta:
         model = Program
-        fields = ["title", "goal", "days_per_week"]
+        fields = ["title", "goal", "days_per_week", "description"]
         labels = {
             "title": "Title",
             "goal": "Training Goal",
             "days_per_week": "Days Per Week",
+            "description": "Description",
         }
         widgets = {"days_per_week": forms.NumberInput(attrs={"max": "7"})}
 

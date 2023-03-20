@@ -1,0 +1,10 @@
+{% extends "kana_workout_builder_app/base.html" %} {% block content %}
+
+<form
+  action="{% url 'kana_workout_builder_app:edit_program' program.id %}"
+  method="post"
+>
+  {% csrf_token %} {{ form.as_p }}
+  <button class="btn btn-primary" name="submit">Save program</button>
+</form>
+{% endblock content %}

@@ -1,6 +1,6 @@
 {% extends "kana_workout_builder_app/base.html" %}
 {% block page_header %}
-<h1>My Programs</h1>
+<h1>My Training Programs</h1>
 {% endblock page_header %}
 {% block content %}
 
@@ -13,36 +13,36 @@
           <h5 class="card-title">{{ program }}</h5>
         </a>
       </div>
-      <ul class="list-group list-group">
-        {% for workout in program.workout_set.all %}
-        <li class="list-group-item">
-          <a href="{% url 'kana_workout_builder_app:workout' workout.id %}">{{workout}}</a>
-        </li>
-        {% empty %}
-        <li class="list-group-item">
-          <p>No workouts have been added to this program yet</p>
-        </li>
-        {% endfor %}
-      </ul>
+      <div class="card-body">
+        <p class="card-text"> 
+          <ul class="list-unstyled">
+            <li><span class="font-weight-bold"> Training Goal: </span> {{ program.get_goal_display }} </li>
+            <li><span class="font-weight-bold"> Days per week: </span>{{ program.days_per_week }}</li>
+            <li><span class="font-weight-bold"> Description: </span>{{ program.description|truncatechars:250  }} </li>
+          </ul>
+          </p>
+      </div>
+      
       <div class="d-flex card-footer justify-content-between">
         <p> <a class="btn btn-md btn-secondary mt-2"
-            href="{% url 'kana_workout_builder_app:new_workout' program.id %}">Add
-            Workout</a></p>
+            href="{% url 'kana_workout_builder_app:edit_program' program.id %}">Edit
+            </a></p>
         <p> <a class="btn btn-danger btn-md mt-2 "
             href="{% url 'kana_workout_builder_app:delete_program' program.id %}">Delete
-            Program</a></p>
+          </a></p>
       </div>
     </div>
   </div>
   {% empty %}
   <h3>No programs have been added yet.</h3>
+  {% endfor %}
 </div>
-{% endfor %}
-</div>
-<p>
-  <a href="{% url 'kana_workout_builder_app:new_program' %}" class="btn btn-lg btn-primary mt-3">Create new
+
+
+<div class="container-fluid">
+  <a href="{% url 'kana_workout_builder_app:new_program' %}" class="btn btn-lg btn-primary mt-3 mb-3">Create new
     program</a>
-</p>
+</div>
 
 
 {% endblock content %}

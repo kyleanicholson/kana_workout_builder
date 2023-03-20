@@ -1,17 +1,17 @@
 {% extends "kana_workout_builder_app/base.html" %} {% block page_header %}
-<div class="jumbotron">
+<div class="jumbotron bg-light">
   <h1 class="display-3">
     Start building your custom strength training plans today
   </h1>
   <p class="lead">
-    Customize your strength training workouts with the Kana workout builder app.
+    Customize your training plans with the Kana workout builder app.
   </p>
   {% if user.is_authenticated %}
   <a
     href="{% url 'kana_workout_builder_app:programs' %}"
     class="btn btn-lg btn-primary"
     role="button"
-    >Go to Programs &raquo;</a
+    >Go to My Programs &raquo;</a
   >
   {% else %}
   <a

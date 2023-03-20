@@ -72,6 +72,24 @@ def new_program(request):
 
 
 @login_required
+def edit_program(request, program_id):
+    """Edit an existing program"""
+    if request.method != "POST":
+        # Initial request; pre-fill form with the current program
+        program = Program.objects.get(id=program_id)
+        form = ProgramForm(instance=program)
+    else:
+        # POST data submitted; process data
+        program = Program.objects.get(id=program_id)
+        form = ProgramForm(instance=program, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("kana_workout_builder_app:programs")
+    context = {"program": program, "form": form}
+    return render(request, "kana_workout_builder_app/edit_program.html", context)
+
+
+@login_required
 def delete_program(request, program_id):
     """Delete an existing program"""
     program = Program.objects.get(id=program_id)

@@ -21,7 +21,7 @@ class Program(models.Model):
     days_per_week = models.PositiveSmallIntegerField(
         default=1, validators=[MinValueValidator(1), MaxValueValidator(7)]
     )
-    notes = models.TextField(null=True)
+    description = models.TextField(null=True)
 
     date_added = models.DateTimeField(auto_now_add=True)
 

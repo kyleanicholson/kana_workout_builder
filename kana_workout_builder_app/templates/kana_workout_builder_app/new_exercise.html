@@ -1,13 +1,21 @@
-{% extends "kana_workout_builder_app/base.html" %}
-{% block content %}
+{% extends "kana_workout_builder_app/base.html" %} {% block content %}
 
-<h3><a href="{% url 'kana_workout_builder_app:workout' workout.id %}">&larr; Back </a></h3>
+<h3>
+  <a href="{% url 'kana_workout_builder_app:workout' workout.id %}"
+    >&larr; Back
+  </a>
+</h3>
 
 <h2>Add new exercise to workout:</h2>
-<form action="{% url 'kana_workout_builder_app:new_exercise' workout.id %}" method='post'>
-    {% csrf_token %}
+<form
+  action="{% url 'kana_workout_builder_app:new_exercise' workout.id %}"
+  method="post"
+>
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
 
-    {{ form.as_p }}
-    <button class="btn btn-primary" name="submit">Add new exercise</button>
+  <button class="btn btn-primary" name="submit">Add new exercise</button>
 </form>
 {% endblock content %}
