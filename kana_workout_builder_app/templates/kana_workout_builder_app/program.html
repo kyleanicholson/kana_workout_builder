@@ -1,0 +1,17 @@
+{% extends "kana_workout_builder_app/base.html" %}
+
+{% block page_header %}
+<h3>{{ program }}</h3>
+{% endblock page_header %}
+{% block content %}
+<p>
+  <a href="{% url 'kana_workout_builder_app:new_workout' program.id %}">Add new workout</a>
+</p>
+  {% for workout in workouts %}
+    <p>{{ workout.title }}</p>
+  {% empty %}
+  <p>No workouts have been added yet</p>
+  {% endfor %}
+</table>
+
+{% endblock content %}

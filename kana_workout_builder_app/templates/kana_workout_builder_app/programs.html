@@ -1,0 +1,48 @@
+{% extends "kana_workout_builder_app/base.html" %}
+{% block page_header %}
+<h1>My Programs</h1>
+{% endblock page_header %}
+{% block content %}
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for program in programs %}
+  <div class="col">
+    <div class="card mb-4">
+      <div class="card-header">
+        <a href="{% url 'kana_workout_builder_app:program' program.id %}">
+          <h5 class="card-title">{{ program }}</h5>
+        </a>
+      </div>
+      <ul class="list-group list-group">
+        {% for workout in program.workout_set.all %}
+        <li class="list-group-item">
+          <a href="{% url 'kana_workout_builder_app:workout' workout.id %}">{{workout}}</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item">
+          <p>No workouts have been added to this program yet</p>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="d-flex card-footer justify-content-between">
+        <p> <a class="btn btn-md btn-secondary mt-2"
+            href="{% url 'kana_workout_builder_app:new_workout' program.id %}">Add
+            Workout</a></p>
+        <p> <a class="btn btn-danger btn-md mt-2 "
+            href="{% url 'kana_workout_builder_app:delete_program' program.id %}">Delete
+            Program</a></p>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <h3>No programs have been added yet.</h3>
+</div>
+{% endfor %}
+</div>
+<p>
+  <a href="{% url 'kana_workout_builder_app:new_program' %}" class="btn btn-lg btn-primary mt-3">Create new
+    program</a>
+</p>
+
+
+{% endblock content %}
