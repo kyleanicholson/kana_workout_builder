@@ -1,4 +1,4 @@
-{% load bootstrap4 %}
+{% load bootstrap4 %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +13,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     {% bootstrap_css %} {% bootstrap_javascript jquery='full' %}
   </head>
 
@@ -68,7 +69,7 @@
         </ul>
       </div>
     </nav>
-    <main role="main" class="container">
+    <main class="container">
       <div class="pb-2 mb-2 border-bottom">
         {% block page_header %}{% endblock page_header %}
       </div>

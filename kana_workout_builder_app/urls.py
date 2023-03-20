@@ -15,6 +15,11 @@ urlpatterns = [
     path("edit_exercise/<int:exercise_id>/", views.edit_exercise, name="edit_exercise"),
     path("programs/", views.programs, name="programs"),
     path("programs/<int:program_id>/", views.program, name="program"),
+    path(
+        "programs/edit_program/<int:program_id>",
+        views.edit_program,
+        name="edit_program",
+    ),
     path("new_program/", views.new_program, name="new_program"),
     path(
         "programs/delete_program/<int:program_id>",
