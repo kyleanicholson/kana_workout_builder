@@ -1,0 +1,9 @@
+/* Custom CSS */
+body {
+  padding-bottom: 17.5rem;
+  background-color: aliceblue;
+}
+
+#hero-container {
+  padding: 10rem;
+}

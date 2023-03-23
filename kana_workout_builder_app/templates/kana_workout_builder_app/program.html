@@ -8,7 +8,10 @@
   <a href="{% url 'kana_workout_builder_app:new_workout' program.id %}">Add new workout</a>
 </p>
   {% for workout in workouts %}
-    <p>{{ workout.title }}</p>
+    <p>{{ workout.title }} <a href= "{% url 'kana_workout_builder_app:workout' workout.id %}">edit</a></p>
+    {% for exercise in workout.exercises.all %}
+      <p>{{ exercise }}</p>
+    {% endfor %}
   {% empty %}
   <p>No workouts have been added yet</p>
   {% endfor %}

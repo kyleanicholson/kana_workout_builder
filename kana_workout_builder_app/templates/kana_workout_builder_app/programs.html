@@ -8,28 +8,32 @@
   {% for program in programs %}
   <div class="col">
     <div class="card mb-4">
-      <div class="card-header">
+      <div class="card-header d-flex">
         <a href="{% url 'kana_workout_builder_app:program' program.id %}">
-          <h5 class="card-title">{{ program }}</h5>
+          <h5 class="card-title">{{ program }} </h5>
         </a>
+        <small class='px-3 py-1'><a href="{% url 'kana_workout_builder_app:edit_program' program.id %}">edit</a></small>
+
       </div>
       <div class="card-body">
-        <p class="card-text"> 
-          <ul class="list-unstyled">
-            <li><span class="font-weight-bold"> Training Goal: </span> {{ program.get_goal_display }} </li>
-            <li><span class="font-weight-bold"> Days per week: </span>{{ program.days_per_week }}</li>
-            <li><span class="font-weight-bold"> Description: </span>{{ program.description|truncatechars:250  }} </li>
-          </ul>
-          </p>
+        <p class="card-text">
+        <ul class="list-unstyled">
+          <li><span class="font-weight-bold"> Training Goal: </span> {{ program.get_goal_display }} </li>
+          <li><span class="font-weight-bold"> Days per week: </span>{{ program.days_per_week }}</li>
+          <li><span class="font-weight-bold"> Description: </span>{{ program.description|truncatechars:250 }} </li>
+        </ul>
+        </p>
       </div>
-      
+
       <div class="d-flex card-footer justify-content-between">
-        <p> <a class="btn btn-md btn-secondary mt-2"
-            href="{% url 'kana_workout_builder_app:edit_program' program.id %}">Edit
-            </a></p>
-        <p> <a class="btn btn-danger btn-md mt-2 "
-            href="{% url 'kana_workout_builder_app:delete_program' program.id %}">Delete
-          </a></p>
+        <p>
+          <a class="btn btn-md btn-primary mt-2" href="{% url 'kana_workout_builder_app:program' program.id %}"> Customize</a>
+        </p>
+        <p>
+          <a class="btn btn-danger btn-md mt-2 "
+            href="{% url 'kana_workout_builder_app:delete_program' program.id %}">Delete Program
+          </a>
+        </p>
       </div>
     </div>
   </div>
@@ -40,7 +44,7 @@
 
 
 <div class="container-fluid">
-  <a href="{% url 'kana_workout_builder_app:new_program' %}" class="btn btn-lg btn-primary mt-3 mb-3">Create new
+  <a href="{% url 'kana_workout_builder_app:new_program' %}" class="btn btn-lg btn-success mt-3 mb-3">Create new
     program</a>
 </div>
 

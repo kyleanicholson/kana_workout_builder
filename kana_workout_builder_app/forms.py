@@ -36,13 +36,12 @@ class WorkoutForm(forms.ModelForm):
 class ExerciseForm(forms.ModelForm):
     class Meta:
         model = Exercise
-        fields = ["name", "sets", "reps", "rpe", "notes"]
+        fields = ["name", "sets", "reps", "rpe"]
         labels = {
             "name": "Name",
             "sets": "Sets",
             "reps": "Reps",
             "rpe": "Target RPE",
-            "notes": "Notes",
         }
         widgets = {"rpe": forms.NumberInput(attrs={"max": "10"})}
 
@@ -51,3 +50,5 @@ class ExerciseForm(forms.ModelForm):
         for field in self.fields:
             new_data = {"class": "form-control"}
             self.fields[str(field)].widget.attrs.update(new_data)
+
+ExerciseFormSet = formset_factory(ExerciseForm, extra=1)
