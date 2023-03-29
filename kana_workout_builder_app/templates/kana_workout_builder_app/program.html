@@ -1,20 +1,52 @@
-{% extends "kana_workout_builder_app/base.html" %}
-
-{% block page_header %}
+{% extends "kana_workout_builder_app/base.html" %} {% block page_header %}
 <h3>{{ program }}</h3>
-{% endblock page_header %}
-{% block content %}
-<p>
-  <a href="{% url 'kana_workout_builder_app:new_workout' program.id %}">Add new workout</a>
-</p>
-  {% for workout in workouts %}
-    <p>{{ workout.title }} <a href= "{% url 'kana_workout_builder_app:workout' workout.id %}">edit</a></p>
-    {% for exercise in workout.exercises.all %}
-      <p>{{ exercise }}</p>
+{% endblock page_header %} {% block content %} 
+
+{% for workout in workouts %}
+<h5>
+  {{ workout.title }}
+  <a href="{% url 'kana_workout_builder_app:workout' workout.id %}">edit</a>
+</h5>
+{% if workout.exercise_set.all %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Exercise</th>
+      <th scope="col">Sets</th>
+      <th scope="col">Reps</th>
+      <th scope="col">Rest</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for exercise in workout.exercise_set.all %}
+    <tr>
+      <td>{{ exercise.name }}</td>
+      <td>{{ exercise.sets }}</td>
+      <td>{{ exercise.reps }}</td>
+      <td>{{ exercise.rest }}</td>
+    </tr>
+
     {% endfor %}
-  {% empty %}
-  <p>No workouts have been added yet</p>
-  {% endfor %}
+  </tbody>
 </table>
+
+{% else %}
+<p>No exercises yet</p>
+<a
+  class="btn btn-primary btn-sm"
+  href="{% url 'kana_workout_builder_app:new_exercise' workout.id %}"
+  >Add new exercise</a
+>
+{% endif %}
+
+{% endfor %}
+
+<div class="container py-3">
+<a
+  class="btn btn-block btn-info "
+  href="{% url 'kana_workout_builder_app:new_workout' program.id %}"
+  >Add new workout</a
+>
+</div>
 
 {% endblock content %}

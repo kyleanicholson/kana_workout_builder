@@ -46,9 +46,15 @@ def register(request):
 
 def edit_profile(request):
     """Edit user profile."""
-    form = EditProfileForm(instance=request.user)
-    if form.is_valid():
-        form.save()
-        return redirect("kana_workout_builder_app:index")
+
+    if request.method != "POST":
+        # Display profile edit form
+        form = EditProfileForm(instance=request.user)
+    else:
+        # Process completed form.
+        form = EditProfileForm(instance=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("kana_workout_builder_app:index")
     context = {"form": form}
     return render(request, "registration/edit_profile.html", context)
