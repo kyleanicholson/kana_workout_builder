@@ -60,6 +60,9 @@ class Exercise(models.Model):
     rpe = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
+    rest = models.PositiveSmallIntegerField(
+        default=0, validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
     notes = models.TextField()
 
     def __str__(self):
