@@ -9,3 +9,13 @@ kana_workout_builder_app/__pycache__/views.cpython-310.pyc
 kana_workout_builder/__pycache__/settings.cpython-310.pyc
 kana_workout_builder/__pycache__/settings.cpython-310.pyc
 kana_workout_builder/__pycache__/settings.cpython-310.pyc
+kana_workout_builder/__pycache__/__init__.cpython-310.pyc
+kana_workout_builder/__pycache__/settings.cpython-310.pyc
+kana_workout_builder/__pycache__/urls.cpython-310.pyc
+kana_workout_builder/__pycache__/wsgi.cpython-310.pyc
+kana_workout_builder_app/models.py
+kana_workout_builder_app/migrations/0005_contact_remove_workout_owner_program_workout_program.py
+kana_workout_builder_app/migrations/0006_exercise_rest.py
+kana_workout_builder_app/migrations/__pycache__/__init__.cpython-310.pyc
+kana_workout_builder_app/migrations/__pycache__/0001_initial.cpython-310.pyc
+kana_workout_builder_app/migrations/__pycache__/0002_rename_text_workout_title_exercise.cpython-310.pyc
