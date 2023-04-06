@@ -1,42 +1,39 @@
 {% extends "kana_workout_builder_app/base.html" %} 
-{% load static %}
-{% block page_header %} 
-  <div id="hero-container" class="px-4 my-5 text-center">
-    <img
-      class="d-block mx-auto mb-2"
-      src="{% static 'kana_workout_builder_app/images/barbell.png' %}"
-      alt=""
-      width="200"
-      height="105"
-    />
-    <h1 class="display-5 fw-bold">
-      Introducing the Ultimate Fitness Companion
-    </h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">
-        Our brand new web application designed to help you build your dream
-        workout program, track your progress and connect with like-minded
-        fitness enthusiasts from all around the world.
-      </p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        {% if user.is_authenticated %}
-        <a
-          href="{% url 'kana_workout_builder_app:programs' %}"
-          class="btn btn-lg btn-info"
-          role="button"
-          >Get Started &raquo;</a
-        >
-        {% else %}
-        <a
-          href="{% url 'users:register' %}"
-          class="btn btn-lg btn-info"
-          role="button"
-          >Sign Up Today &raquo;</a
-        >
-        {% endif %}
-      </div>
+{% load static %} 
+{% block page_header %}
+<div id="hero-container" class="px-4 text-center">
+  <img
+    class="d-block mx-auto mb-2"
+    src="{% static 'kana_workout_builder_app/images/barbell.png' %}"
+    alt=""
+    width="200"
+    height="105"
+  />
+  <h1 class="display-5 fw-bold">Introducing the Ultimate Fitness Companion</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">
+      Our brand new web application designed to help you build your dream
+      workout program, track your progress and connect with like-minded fitness
+      enthusiasts from all around the world.
+    </p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      {% if user.is_authenticated %}
+      <a
+        href="{% url 'kana_workout_builder_app:programs' %}"
+        class="btn btn-lg btn-info"
+        role="button"
+        >Get Started &raquo;</a
+      >
+      {% else %}
+      <a
+        href="{% url 'users:register' %}"
+        class="btn btn-lg btn-info"
+        role="button"
+        >Sign Up Today &raquo;</a
+      >
+      {% endif %}
     </div>
   </div>
-
+</div>
 
 {% endblock page_header %}

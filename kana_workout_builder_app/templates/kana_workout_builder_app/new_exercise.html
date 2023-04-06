@@ -1,10 +1,10 @@
 {% extends "kana_workout_builder_app/base.html" %} {% block content %}
 
-<h3>
+<h4>
   <a href="{% url 'kana_workout_builder_app:workout' workout.id %}"
     >&larr; Back
   </a>
-</h3>
+</h4>
 
 <h2>Add exercises to workout:</h2>
 <form
@@ -15,7 +15,7 @@
   
     {{ form.as_table }}
   
-
-  <button class="btn btn-primary" name="submit">Add new exercise</button>
+  <br/>
+  <button class="btn btn-primary" name="submit">Add exercise</button>
 </form>
 {% endblock content %}
