@@ -139,6 +139,15 @@ def new_workout(request, program_id):
 
 
 @login_required
+def delete_workout(request, workout_id):
+    """Delete an existing workout"""
+    workout = Workout.objects.get(id=workout_id)
+    program = workout.program
+    workout.delete()
+    return redirect("kana_workout_builder_app:program", program_id=program.id)
+
+
+@login_required
 def new_exercise(request, workout_id):
     """Add a new exercise for a particular workout"""
     workout = Workout.objects.get(id=workout_id)

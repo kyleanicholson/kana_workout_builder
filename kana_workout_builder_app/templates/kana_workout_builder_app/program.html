@@ -1,18 +1,23 @@
 {% extends "kana_workout_builder_app/base.html" %} {% block page_header %}
-<h3 class="px-1">{{ program }}</h3>
+<h1 class="px-1">{{ program }}</h1>
 {% endblock page_header %} {% block content %}
 
 {% for workout in workouts %}
 <section class="rounded bg-light p-3 my-3" id="workout">
-  <h4 class = "d-flex justify-content-between rounded p-2 text-secondary">
-    {{ workout.title }}
-    <a href="{% url 'kana_workout_builder_app:workout' workout.id %}" class="btn btn-primary border">edit</a>
-  </h4>
+    <div class="container d-flex justify-content-between py-3">
+      <h3 class = "rounded px-1 text-dark">
+      {{ workout.title }}
+      </h3 >
+      <div>
+        <a href="{% url 'kana_workout_builder_app:workout' workout.id %}" class="btn btn-primary border">Edit Workout</a>
+        <a href="{% url 'kana_workout_builder_app:delete_workout' workout.id %}" class="btn btn-danger border">Delete Workout</a>
+      </div>
+    </div>
   {% if workout.exercise_set.all %}
   <div class="table-responsive px-2">
     <table class="table table-bordered">
-      <thead class="bg-dark text-light" >
-        <tr >
+      <thead class="bg-secondary text-light" >
+        <tr>
           <th scope="col">Exercise</th>
           <th scope="col">Sets</th>
           <th scope="col">Reps</th>
@@ -34,13 +39,13 @@
   </div>
   {% else %}
   <p class= ml-2>No exercises added yet</p>
-  <a class="btn btn-primary btn-sm ml-2" href="{% url 'kana_workout_builder_app:new_exercise' workout.id %}">Add exercise</a>
+  <a class="btn btn-primary btn-sm ml-2" href="{% url 'kana_workout_builder_app:new_exercise' workout.id %}">Add Exercise</a>
   {% endif %}
 </section>
 {% endfor %}
 
 <div class="py-2">
-  <a class="btn btn-block btn-info " href="{% url 'kana_workout_builder_app:new_workout' program.id %}">Add workout</a>
+  <a class="btn btn-block btn-info " href="{% url 'kana_workout_builder_app:new_workout' program.id %}">Add New Workout</a>
 </div>
 
 {% endblock content %}

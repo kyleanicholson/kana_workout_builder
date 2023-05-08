@@ -4,7 +4,7 @@
 {% endblock page_header %}
 {% block content %}
 
-<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="row row-cols-1  g-4">
   {% for program in programs %}
   <div class="col">
     <div class="card mb-4">
@@ -27,7 +27,7 @@
 
       <div class="d-flex card-footer justify-content-between">
         <p>
-          <a class="btn btn-md btn-primary mt-2" href="{% url 'kana_workout_builder_app:program' program.id %}"> Customize</a>
+          <a class="btn btn-md btn-secondary mt-2" href="{% url 'kana_workout_builder_app:program' program.id %}"> Customize</a>
         </p>
         <p>
           <a class="btn btn-danger btn-md mt-2 "
@@ -44,8 +44,8 @@
 
 
 <div class="container-fluid">
-  <a href="{% url 'kana_workout_builder_app:new_program' %}" class="btn btn-block btn-success mt-3 mb-3">Create new
-    program</a>
+  <a href="{% url 'kana_workout_builder_app:new_program' %}" class="btn btn-block btn-info mt-3 mb-3">Create New
+    Program</a>
 </div>
 
 

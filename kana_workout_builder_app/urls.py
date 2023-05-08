@@ -26,6 +26,9 @@ urlpatterns = [
         views.delete_program,
         name="delete_program",
     ),
+    path(
+        "delete_workout/<int:workout_id>/", views.delete_workout, name="delete_workout"
+    ),
 ]
 
 # TODO: edit_workout
