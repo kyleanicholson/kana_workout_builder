@@ -21,7 +21,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4 border" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 border" data-bs-theme="dark">
       <a class="navbar-brand" href="{% url 'kana_workout_builder_app:index' %}">
         <i class="fa-solid fa-dumbbell fa-lg px-3"></i
           >Kana</a>
@@ -59,13 +59,7 @@
               > Programs</a
             >
           </li>
-          <li class="nav-item">
-            <a
-              href="{% url 'kana_workout_builder_app:programs' %}"
-              class="nav-link"
-              >Workout Log </a
-            >
-          </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
