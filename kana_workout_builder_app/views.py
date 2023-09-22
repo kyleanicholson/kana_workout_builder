@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Workout, Exercise, Program, Contact
 from .forms import WorkoutForm, ExerciseForm, ProgramForm
 from django.contrib.auth.decorators import login_required
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
+import pandas as pd
+from django.utils import timezone
 
 
 def index(request):
@@ -95,6 +97,58 @@ def delete_program(request, program_id):
     program = Program.objects.get(id=program_id)
     program.delete()
     return redirect("kana_workout_builder_app:programs")
+
+
+@login_required
+def export_program_to_excel(request, program_id):
+    """Export an existing program to an excel file"""
+    program = Program.objects.get(id=program_id)
+    workouts = program.workout_set.all()
+    exercise_data = []
+    # Iterate through workouts
+    for workout in workouts:
+        # Create a Pandas DataFrame for workout-level data
+        workout_data = {
+            "Workout Title": workout.title,
+            "Exercise Name": None,  # Leave this cell empty for workouts
+            "Sets": None,
+            "Reps": None,
+            "RPE": None,
+            "Rest": None,
+            "Notes": None,
+        }
+
+        # Append workout data to the exercise_data list (to be inserted before exercises)
+        exercise_data.append(workout_data)
+
+        # Retrieve exercises for the current workout
+        exercises = workout.exercise_set.all()
+        for exercise in exercises:
+            exercise_row = {
+                "Workout Title": None,  # Leave this cell empty for exercises
+                "Exercise Name": exercise.name,
+                "Sets": exercise.sets,
+                "Reps": exercise.reps,
+                "RPE": exercise.rpe,
+                "Rest": f"{exercise.rest} min",
+                "Notes": exercise.notes,
+            }
+            exercise_data.append(exercise_row)
+
+    # Create a Pandas DataFrame from the exercise data
+    df = pd.DataFrame(exercise_data)
+
+    # Convert any datetime columns to timezone-unaware
+    for col in df.select_dtypes(include=["datetime64"]).columns:
+        df[col] = df[col].dt.tz_localize(None)
+
+    # Create an Excel writer object
+    response = HttpResponse(content_type="application/ms-excel")
+    response["Content-Disposition"] = f'attachment; filename="{program.title}.xlsx"'
+
+    # Write the DataFrame to the Excel file
+    df.to_excel(response, index=False, engine="openpyxl")
+    return response
 
 
 @login_required
