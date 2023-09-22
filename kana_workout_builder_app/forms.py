@@ -36,13 +36,14 @@ class WorkoutForm(forms.ModelForm):
 class ExerciseForm(forms.ModelForm):
     class Meta:
         model = Exercise
-        fields = ["name", "sets", "reps", "rpe", "rest"]
+        fields = ["name", "sets", "reps", "rpe", "rest", "notes"]
         labels = {
             "name": "Name",
             "sets": "Sets",
             "reps": "Reps",
             "rpe": "Target RPE",
             "rest": "Rest (minutes)",
+            "notes": "Notes",
         }
         widgets = {"rpe": forms.NumberInput(attrs={"max": "10"})}
 
