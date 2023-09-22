@@ -2,21 +2,27 @@
 <h2>About</h2>
 {% endblock page_header %} {% block content %}
 <p>
-  Welcome to Kana, the ultimate tool for building and tracking your fitness journey. We understand that everyone's fitness goals are unique, which is why we designed our application to be customizable to your needs. Whether you're a beginner or an advanced athlete, our app will help you build your dream workout program, track your progress and connect with like-minded fitness enthusiasts from all around the world.
+    Welcome to Kana, the ultimate tool for building and tracking your fitness journey. We understand that everyone's
+    fitness goals are unique, which is why we designed our application to be customizable to your needs. Whether you're
+    a beginner or an advanced athlete, our app will help you build your dream strength training program which you can then easily
+    export to Excel and share with your friends, family or clients.
 </p>
- 
+
 </p>
 <h3>How it Works</h3>
 <p>
-  Our application is designed to be as simple and intuitive as possible. To get started, simply create a free account and log in. Once you're logged in, you'll be able to create your own workout programs, or use one of our pre-built templates. You can also browse through our library of exercises to find the perfect exercises for your program. Once you've created your program, you can track your progress by logging your workouts and recording your results. You can also connect with other users and share your progress with your friends and family.
+    Our application is designed to be as simple and intuitive as possible. To get started, simply create a free account
+    and log in. Once you're logged in, you'll be able to create your own workout programs, or use one of our pre-built
+    templates. Once you've created your program, you can add workouts to it, and then add exercises to each workout. You
+    can also edit or delete any of your programs, workouts or exercises at any time.
 <p>
-  
-  We welcome your feedback -- If you have any questions, concerns or
-  suggestions, please get in touch via our
-  <a href="{% url 'kana_workout_builder_app:contact' %}">contact page</a>.
+
+    We welcome your feedback -- If you have any questions, concerns or
+    suggestions, please get in touch via our
+    <a href="{% url 'kana_workout_builder_app:contact' %}">contact page</a>.
 </p>
 <p>
-  <a href="{% url 'users:register' %}"> Create a free account </a> and log in to
-  save, create, and share your customized strength training templates!
+    <a href="{% url 'users:register' %}"> Create a free account </a> and log in to
+    save, create, and share your customized strength training templates!
 </p>
 {% endblock content %}
