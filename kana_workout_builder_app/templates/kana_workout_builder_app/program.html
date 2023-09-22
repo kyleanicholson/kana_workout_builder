@@ -1,5 +1,9 @@
 {% extends "kana_workout_builder_app/base.html" %} {% block page_header %}
 <h1 class="px-1">{{ program }}</h1>
+<!--Export program to Excel-->
+<div class="d-flex justify-content-end">
+  <a href="{% url 'kana_workout_builder_app:export_program' program.id %}" class="btn btn-primary btn-sm"><i class="fa-solid fa-table"></i> Export to Excel</a>
+</div>
 {% endblock page_header %} {% block content %}
 
 {% for workout in workouts %}
@@ -9,14 +13,14 @@
       {{ workout.title }}
       </h3 >
       <div>
-        <a href="{% url 'kana_workout_builder_app:workout' workout.id %}" class="btn btn-primary border">Edit Workout</a>
+        <a href="{% url 'kana_workout_builder_app:workout' workout.id %}" class="btn btn-secondary border">Edit Workout</a>
         <a href="{% url 'kana_workout_builder_app:delete_workout' workout.id %}" class="btn btn-danger border">Delete Workout</a>
       </div>
     </div>
   {% if workout.exercise_set.all %}
   <div class="table-responsive px-2">
     <table class="table table-bordered">
-      <thead class="bg-secondary text-light" >
+      <thead class="bg-dark text-light" >
         <tr>
           <th scope="col">Exercise</th>
           <th scope="col">Sets</th>
@@ -45,7 +49,7 @@
 {% endfor %}
 
 <div class="py-2">
-  <a class="btn btn-block btn-info " href="{% url 'kana_workout_builder_app:new_workout' program.id %}">Add New Workout</a>
+  <a class="btn btn-block btn-primary" href="{% url 'kana_workout_builder_app:new_workout' program.id %}">Add New Workout</a>
 </div>
 
 {% endblock content %}
