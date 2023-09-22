@@ -13,7 +13,7 @@ pip install -r requirements.txt
 3. Run the application
 
 ```bash
-python app.py
+python manage.py runserver
 ```
 4. Create a user account
-5. Start building your workout plan
+5. Start building your workout plans!
